@@ -1,13 +1,13 @@
 
 # layouts/index.html
 [FrontTitle]
-other = ""
+other = "Front Title"
 
 [FrontSubtitle]
-other = ""
+other = "Front Subtitle"
 
 [FrontMapHeading]
-other = ""
+other = "Front Map Heading"
 
 [FrontContribute]
 other = "Contribute"
@@ -19,7 +19,7 @@ other = ""
 other = "Why"
 
 [FrontWhyText]
-other = ""
+other = "Why text -- image frontmatter value for the index markdown will populate image here"
 
 [FrontStayupdated]
 other = "Stay up to date"
