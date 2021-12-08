@@ -19,7 +19,7 @@ other = ""
 other = "Why"
 
 [FrontWhyText]
-other = "Why text -- image frontmatter value for the index markdown will populate image here"
+other = "Why text"
 
 [FrontStayupdated]
 other = "Stay up to date"
