@@ -12,7 +12,7 @@ defaultContentLanguageInSubdir = true
 [languages]
   [languages.en]
     languageName = "English"
-    title = "LEOSS.sero-survey"
+    title = "Influenza Survey"
     weight = 1
     sponsor_url = "https://www.helmholtz.de/en"
     bio_full = ""
@@ -72,21 +72,21 @@ leaflet_central_long = 13.4050
 [[params.social]]
   icon = "envelope"
   icon_pack = "fa"
-  link = "mailto:serohub@helmholtz-hzi.de"
-  text = "serohub@helmholtz-hzi.de"
+  link = "mailto:email@helmholtz-hzi.de"
+  text = "email@helmholtz-hzi.de"
 
 [[params.social]]
   icon = "twitter"
   icon_pack = "fa"
-  link = "https://twitter.com/serohub"
-  text = "@serohub"
+  link = "https://twitter.com/"
+  text = "@twitter"
   site = "Twitter"
 
 [[params.social]]
   icon = "github"
   icon_pack = "fa"
-  link = "https://github.com/hzi-braunschweig/serohub"
-  text = "hzi-braunschweig/serohub"
+  link = "https://github.com/"
+  text = "hzi-braunschweig/github"
   site = "GitHub"
 
 # Navigation Links
