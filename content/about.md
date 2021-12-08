@@ -10,6 +10,6 @@ menu:
 
 ## Scope
 
-## What is seroprevalence?
+## What is Influenza?
 
 ## Contact Us
