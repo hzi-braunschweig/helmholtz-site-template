@@ -1,6 +1,7 @@
 ---
 title: SeroHub homepage
-image: "img/hub_en.png"
+# image value here gets populated in the why section
+image: ""
 ---
 
 ...English welcome content goes here...
