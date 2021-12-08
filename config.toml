@@ -1,4 +1,4 @@
-baseurl = ""
+baseurl = "https://"
 author = "Helmholtz HZI"
 copyright = "Copyright (c) 2020 Helmholtz HZI"
 canonifyurls = true
