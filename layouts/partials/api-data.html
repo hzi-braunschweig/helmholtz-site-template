@@ -1,0 +1,8 @@
+<div>
+  {{ $urlPre := "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed" }}
+  {{ $data := getJSON $urlPre "&retmode=json&id=34871331/" }}
+  {{ $fetch := $data.result}}
+  <li>
+    <p>{{$fetch}}</p>
+  </li>
+</div>
