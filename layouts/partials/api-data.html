@@ -10,11 +10,11 @@
       {{$url2 := printf "%s%s" "db=pubmed&retmode=json&id=" $firstId}}
       <!-- printing the data that's a combination of the baseURL and the append from $url2 -->
       {{ $data2 := getJSON $urlSummaryPre $url2}}
-      {{$innerData := $data2.result}}
-      {{$zero := int "34894525" }}
+      {{$innerData := $data2.result }}
+      {{$makeInt := "34871331" }}
   <article>
     <div>
-      <h3>{{ $innerData}}</h3>
+      <h3>{{ index $innerData $makeInt }}</h3>
     </div>
   </article>
   {{ end }}
