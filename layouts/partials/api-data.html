@@ -5,16 +5,17 @@
   {{ $urlSummaryPre := "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?"}}
   <!-- First we range to get the idlist -->
   {{ $data := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=2021/11&maxdate2021/11&retmode=json&retmax=10&term=influenza&field=title&rettype=field" }}
-  {{range first 1 $data.esearchresult.idlist }}
+  {{range $data.esearchresult.idlist }}
       {{$firstId := . }}
       {{$url2 := printf "%s%s" "db=pubmed&retmode=json&id=" $firstId}}
       <!-- printing the data that's a combination of the baseURL and the append from $url2 -->
       {{ $data2 := getJSON $urlSummaryPre $url2}}
-      {{$innerData := $data2.result }}
-      {{$makeInt := int "34871331" }}
+      {{$dataResult := $data2.result }}
+      {{$stringifyId := string .}}
+      {{$makeInt := index $dataResult $stringifyId }}
   <article>
     <div>
-      <h3>{{ index $innerData "34871331" }}</h3>
+      <h3>{{ $makeInt.lastauthor }}</h3>
     </div>
   </article>
   {{ end }}
