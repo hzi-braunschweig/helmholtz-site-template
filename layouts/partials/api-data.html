@@ -15,7 +15,8 @@
       {{$makeInt := index $dataResult $stringifyId }}
   <article>
     <div>
-      <h3>{{ $makeInt.lastauthor }}</h3>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/{{$firstId}}"> {{ htmlUnescape $makeInt.title }}</a></h3>
+      <p>{{ $makeInt.lastauthor }}</p>
     </div>
   </article>
   {{ end }}
