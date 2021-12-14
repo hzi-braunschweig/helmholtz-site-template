@@ -5,7 +5,16 @@
   {{ $urlSummaryPre := "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?"}}
   <!-- First we range to get the idlist -->
   {{$searchTerm := .Get "searchterm" }}
-  {{ $data := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=2021/11&maxdate2021/11&retmode=json&retmax=10&term=" $searchTerm "&field=title&rettype=field" }}
+  {{$minDate := .Get "mindate" }}
+  {{$maxDate := .Get "maxdate" }}
+  {{$articlesRetrieved := .Get "articlesretrieved" }}
+  {{ $data := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=" $minDate "&maxdate=" $maxDate "&retmode=json&retmax=" $articlesRetrieved "&term=" $searchTerm "&field=title&rettype=field" }}
+    <div style="display: flex;">
+        <h3>Search term: "{{$searchTerm}}"</h3>
+        <h3>Min date: "{{$minDate}}"</h3>
+        <h3>Max date: "{{$maxDate}}"</h3>
+        <h3>Articles Retrieved: "{{$articlesRetrieved}}"</h3>
+    </div>
   {{range $data.esearchresult.idlist }}
       {{$firstId := . }}
       {{$url2 := printf "%s%s" "db=pubmed&retmode=json&id=" $firstId}}
