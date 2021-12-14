@@ -11,10 +11,10 @@
       <!-- printing the data that's a combination of the baseURL and the append from $url2 -->
       {{ $data2 := getJSON $urlSummaryPre $url2}}
       {{$innerData := $data2.result }}
-      {{$makeInt := "34871331" }}
+      {{$makeInt := int "34871331" }}
   <article>
     <div>
-      <h3>{{ index $innerData $makeInt }}</h3>
+      <h3>{{ index $innerData "34871331" }}</h3>
     </div>
   </article>
   {{ end }}
