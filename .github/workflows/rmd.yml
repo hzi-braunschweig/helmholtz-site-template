@@ -15,19 +15,20 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  render: Render R Markdown File
-  runs-on: ubuntu-latest
-  steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v2
-      - uses: r-lib/actions/setup-pandoc@v2
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages("rmarkdown")'
-      - name: Render README
-        run: Rscript -e 'rmarkdown::render("Sample.Rmd", output_format = "md_document")'
-      - name: Commit results
-        run: |
-          git commit SAMPLE.md -m 'Re-build Sample.Rmd' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+  render: 
+    name: Render R Markdown File
+    runs-on: ubuntu-latest
+    steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+        - uses: r-lib/actions/setup-r@v2
+        - uses: r-lib/actions/setup-pandoc@v2
+        - name: Install rmarkdown
+          run: Rscript -e 'install.packages("rmarkdown")'
+        - name: Render README
+          run: Rscript -e 'rmarkdown::render("Sample.Rmd", output_format = "md_document")'
+        - name: Commit results
+          run: |
+            git commit SAMPLE.md -m 'Re-build Sample.Rmd' || echo "No changes to commit"
+            git push origin || echo "No changes to commit"
 
