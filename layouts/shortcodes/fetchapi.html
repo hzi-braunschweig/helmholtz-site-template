@@ -3,30 +3,38 @@
   {{ $urlSearchPre := "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?"}}
   <!-- This is the base endpoint to get a the information about the article associated with the ID -->
   {{ $urlSummaryPre := "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?"}}
-  <!-- First we range to get the idlist -->
+
+  <!-- Define variables for shortcode call -->
   {{$searchTerm := .Get "searchterm" }}
   {{$minDate := .Get "mindate" }}
   {{$maxDate := .Get "maxdate" }}
   {{$articlesRetrieved := .Get "articlesretrieved" }}
-  {{ $data := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=" $minDate "&maxdate=" $maxDate "&retmode=json&retmax=" $articlesRetrieved "&term=" $searchTerm "&field=title&rettype=field" }}
-    <div style="display: flex;">
-        <h3>Search term: "{{$searchTerm}}"</h3>
-        <h3>Min date: "{{$minDate}}"</h3>
-        <h3>Max date: "{{$maxDate}}"</h3>
-        <h3>Articles Retrieved: "{{$articlesRetrieved}}"</h3>
-    </div>
-  {{range $data.esearchresult.idlist }}
-      {{$firstId := . }}
-      {{$url2 := printf "%s%s" "db=pubmed&retmode=json&id=" $firstId}}
-      <!-- printing the data that's a combination of the baseURL and the append from $url2 -->
-      {{ $data2 := getJSON $urlSummaryPre $url2}}
-      {{$dataResult := $data2.result }}
+
+  <!-- Use getJSON with variables -->
+  {{ $dataSearch := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=" $minDate "&maxdate=" $maxDate "&retmode=json&retmax=" $articlesRetrieved "&term=" $searchTerm "&field=title&rettype=field" }}
+
+  <!-- Print user input on page -->
+<div style="display: flex;">
+    <h3>Search term: "{{$searchTerm}}"</h3>
+    <h3>Min date: "{{$minDate}}"</h3>
+    <h3>Max date: "{{$maxDate}}"</h3>
+    <h3>Articles Retrieved: "{{$articlesRetrieved}}"</h3>
+</div>
+
+
+<!-- First we range to get the idlist -->
+  {{range $dataSearch.esearchresult.idlist }}
+      {{$articleId := . }}
+      {{$urlSummary := printf "%s%s" "db=pubmed&retmode=json&id=" $articleId}}
+      <!-- printing the data that's a combination of the baseURL and the append from $urlSummary -->
+      {{ $dataSummary := getJSON $urlSummaryPre $urlSummary}}
+      {{$dataResult := $dataSummary.result }}
       {{$stringifyId := string .}}
-      {{$makeInt := index $dataResult $stringifyId }}
+      {{$articleData := index $dataResult $stringifyId }}
   <article>
     <div>
-      <h3><a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/{{$firstId}}"> {{ safeHTML  $makeInt.title }}</a></h3>
-      <p>Last author: {{ $makeInt.lastauthor }}</p>
+      <h3><a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/{{$articleId}}"> {{ safeHTML  $articleData.title }}</a></h3>
+      <p>Last author: {{ $articleData.lastauthor }}</p>
     </div>
   </article>
   {{ end }}
