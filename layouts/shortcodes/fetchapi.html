@@ -21,7 +21,6 @@
     <h3>Articles Retrieved: {{$articlesRetrieved}}</h3>
 </div>
 
-
 <!-- First we range to get the idlist -->
 <article>
   {{range $dataSearch.esearchresult.idlist }}
@@ -35,8 +34,9 @@
       {{$articleData := index $dataResult $stringifyId }}
     <div>
       <h3><a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/{{$articleId}}"> {{ safeHTML  $articleData.title }}</a></h3>
-      <p>Last author: {{ $articleData.lastauthor }}</p>
+      <p>Last author: {{ $articleData.lastauthor }} <small>{{ $articleData.elocationid }}</small></p>
     </div>
     {{ end }}
+    <i>PubMed - as supplied by publisher</i>
 </article>
 </div>
