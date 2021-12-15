@@ -23,19 +23,20 @@
 
 
 <!-- First we range to get the idlist -->
+<article>
   {{range $dataSearch.esearchresult.idlist }}
       {{$articleId := . }}
+<!-- Use printf to concatenate article ID with data summary endpoint -->
       {{$urlSummary := printf "%s%s" "db=pubmed&retmode=json&id=" $articleId}}
-      <!-- printing the data that's a combination of the baseURL and the append from $urlSummary -->
+<!-- printing the data that's a combination of the summary baseURL and the append from $urlSummary -->
       {{ $dataSummary := getJSON $urlSummaryPre $urlSummary}}
       {{$dataResult := $dataSummary.result }}
       {{$stringifyId := string .}}
       {{$articleData := index $dataResult $stringifyId }}
-  <article>
     <div>
       <h3><a target="_blank" rel="noopener noreferrer" href="https://pubmed.ncbi.nlm.nih.gov/{{$articleId}}"> {{ safeHTML  $articleData.title }}</a></h3>
       <p>Last author: {{ $articleData.lastauthor }}</p>
     </div>
-  </article>
-  {{ end }}
+    {{ end }}
+</article>
 </div>
