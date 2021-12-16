@@ -6,7 +6,7 @@
     <header>
       <nav class="nav-bar">
 	<!-- The title bar is used for small sizes.  -->
-	  <div class="title-bar flex-container" data-responsive-toggle="site-menu" data-hide-for="medium">	      
+	  <div class="title-bar flex-container" data-responsive-toggle="site-menu" data-hide-for="medium">
 	    <!-- <button class="site-hamburger" type="button" data-toggle>
 	      <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
 		</button> -->
@@ -20,14 +20,14 @@
 			so you can use the :checked selector on it.
 			-->
 			<input type="checkbox" />
-			
+
 			<!--
 			Some spans to act as a hamburger.
 			-->
 			<span></span>
 			<span></span>
 			<span></span>
-			
+
 			<ul id="menu" class="popout">
 				{{ $currentNode := . }}
 				{{ range .Site.Menus.main }}
@@ -45,9 +45,9 @@
 	      {{ end }}
 	    </div>
 	  </div>
-	    
+
 	  <!-- The top bar is used for medium and up.  -->
-	    <div class="top-bar" id="site-menu" >	      
+	    <div class="top-bar" id="site-menu" >
 	      <div class="top-bar-title show-for-medium site-title">
 		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
 	      </div>
