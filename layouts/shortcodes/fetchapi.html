@@ -14,7 +14,7 @@
   {{ $dataSearch := getJSON $urlSearchPre "db=pubmed&datetype=pdat&mindate=" $minDate "&maxdate=" $maxDate "&retmode=json&retmax=" $articlesRetrieved "&term=" $searchTerm "&field=title&rettype=field" }}
 
   <!-- Print user input on page -->
-<div style="display: flex;">
+<div style="display: flex; justify-content: space-between;">
     <h3>Search term(s): {{$searchTerm}}</h3>
     <h3>Min date: {{$minDate}}</h3>
     <h3>Max date: {{$maxDate}}</h3>
