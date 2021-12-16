@@ -29,6 +29,8 @@ jobs:
           run: Rscript -e 'install.packages(c( "rmarkdown", "flexdashboard" ))'
         - name: Render Sample Rmd File
           run: Rscript -e 'rmarkdown::render("sample.Rmd")'
+        - name: Stage results
+          run: git add sample.html || echo "Nothing to stage"
         - name: Commit results
           run: |
             git commit sample.html -m 'Re-build sample.html' || echo "No changes to commit"
