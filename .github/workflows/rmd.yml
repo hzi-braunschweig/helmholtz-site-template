@@ -27,10 +27,10 @@ jobs:
         - uses: r-lib/actions/setup-pandoc@v2
         - name: Install rmarkdown
           run: Rscript -e 'install.packages("rmarkdown")'
-        - name: Render README
-          run: Rscript -e 'rmarkdown::render("Sample.Rmd", output_format = "md_document")'
+        - name: Render Sample Rmd File
+          run: Rscript -e 'rmarkdown::render("sample.Rmd", output_format = "md_document")'
         - name: Commit results
           run: |
-            git commit SAMPLE.md -m 'Re-build Sample.Rmd' || echo "No changes to commit"
+            git commit SAMPLE.md -m 'Re-build sample.Rmd' || echo "No changes to commit"
             git push origin || echo "No changes to commit"
 
