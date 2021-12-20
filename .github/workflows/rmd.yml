@@ -33,6 +33,6 @@ jobs:
           run: |
             git config user.name github-actions
             git config user.email github-actions@github.com
-            git add .
-            git commit -m "Sample dashboard"
-            git push || echo "No changes to commit"
+            git add .  || echo "No changes to commit"
+            git commit -m "Sample dashboard"  || echo "No changes to commit"
+            git push  || echo "No changes to commit"
