@@ -118,3 +118,7 @@ home = ["HTML", "RSS", "JSON"]
 mediaType = "application/json"
 baseName = "studies"
 isPlainText =  true
+
+[dashboard]
+url = "sample.html"
+button = "Sample dashboard"
