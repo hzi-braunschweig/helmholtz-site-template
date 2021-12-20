@@ -28,7 +28,7 @@ jobs:
         - name: Install rmarkdown and flexdashboard
           run: Rscript -e 'install.packages(c( "rmarkdown", "flexdashboard" ))'
         - name: Render Sample Rmd File
-          run: Rscript -e 'rmarkdown::render("sample.Rmd")'
+          run: Rscript -e 'rmarkdown::render("sample.Rmd", output_dir="static")'
         - name: Commit results
           run: |
             git config user.name github-actions
