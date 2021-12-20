@@ -22,10 +22,10 @@
       {{ .Content  }}
   </div>
 
-{{ with .Site.Params.dashboard }}
+{{ if .Site.Params.dashboard }}
   <div class="column medium-2">
 	 
-    <a href="{{ .url }}">{{ .button }}</a>
+    <a href="{{ .Site.Params.dashboard.url }}">{{ .Site.Params.dashboard.button }}</a>
   </div>
 {{ end }}
 </div>
