@@ -6,8 +6,8 @@ name: Render rmd file
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: 
-      -  main 
+    branches:
+      -  main
       -  feature/test-rmd
   schedule:
   - cron: "0 0 * * *"
@@ -17,7 +17,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  render: 
+  render:
     name: Render R Markdown File
     runs-on: ubuntu-latest
     steps:
@@ -25,12 +25,14 @@ jobs:
         - uses: actions/checkout@v2
         - uses: r-lib/actions/setup-r@v2
         - uses: r-lib/actions/setup-pandoc@v2
-        - name: Install rmarkdown
-          run: Rscript -e 'install.packages("rmarkdown")'
+        - name: Install rmarkdown and flexdashboard
+          run: Rscript -e 'install.packages(c( "rmarkdown", "flexdashboard" ))'
         - name: Render Sample Rmd File
-          run: Rscript -e 'rmarkdown::render("sample.Rmd", output_format = "md_document")'
+          run: Rscript -e 'rmarkdown::render("sample.Rmd", output_dir="static")'
         - name: Commit results
           run: |
-            git commit SAMPLE.md -m 'Re-build sample.Rmd' || echo "No changes to commit"
-            git push origin || echo "No changes to commit"
-
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .  || echo "No changes to commit"
+            git commit -m "Sample dashboard"  || echo "No changes to commit"
+            git push  || echo "No changes to commit"
