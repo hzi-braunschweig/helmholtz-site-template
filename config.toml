@@ -59,7 +59,7 @@ leaflet_central_lat = 52.5200
 leaflet_central_long = 13.4050
 
 [params.dashboard]
-url = "sample.html"
+url = "../sample.html"
 button = "Sample dashboard"
 
 [markup]
